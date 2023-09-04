@@ -49,9 +49,6 @@ This is a simple Tic Tac Toe game implemented in React, HTML, CSS, and JavaScrip
 
 5. Open your web browser and visit `http://localhost:5173` to play the game.
 
-## Game Starting Page
-
-![Game Starting Page](./src/images/game_starting_page.png)
 
 ## Contributing
 
