@@ -1,38 +1,45 @@
-const StatusMessage = ({ isXNext, winner, squares }) => {
-  const noMovesLeft = squares.every(squareValue => squareValue != null);
-  const nextPlayerMessage = isXNext ? 'X' : 'O';
+const StatusMessage = ({ winner, gamingBoard }) => {
+  const { squares, isXNext } = gamingBoard;
+
+  const noMovesLeft = squares.every(squareValue => squareValue !== null);
+  const nextPlayer = isXNext ? 'X' : 'O';
 
   const renderStatusMessage = () => {
     if (winner) {
       return (
         <>
-          The winner is{' '}
-          <span className={winner == 'X' ? 'textgreen' : 'text-orange'}>
+          Winner is{' '}
+          <span className={winner === 'X' ? 'text-green' : 'text-orange'}>
             {winner}
           </span>
         </>
       );
     }
+
     if (!winner && noMovesLeft) {
       return (
         <>
-          Its A DRAW between <span className="text-green">X</span> and{' '}
-          <span className="text-orange">O</span>
+          <span className="text-orange">O</span> and{' '}
+          <span className="text-green">X</span> tied
         </>
       );
     }
+
     if (!winner && !noMovesLeft) {
       return (
         <>
-          The Next Player Is{' '}
+          Next player is{' '}
           <span className={isXNext ? 'text-green' : 'text-orange'}>
-            {nextPlayerMessage}
+            {nextPlayer}
           </span>
         </>
       );
     }
+
     return null;
   };
-  return <div className="status-message">{renderStatusMessage()}</div>;
+
+  return <h2 className="status-message">{renderStatusMessage()}</h2>;
 };
+
 export default StatusMessage;
